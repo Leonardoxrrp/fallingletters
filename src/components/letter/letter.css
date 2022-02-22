@@ -1,8 +1,14 @@
+@keyframes show {
+    from {opacity: 0}
+    to {opacity: 1}
+}
+
 .letter {
+    border-radius: 3px;
     position: absolute;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: gray;
-    color: black;
+    animation-name: show;
 }

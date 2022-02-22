@@ -1,20 +1,20 @@
 import React from 'react'
 import "./letter.css"
 
-const Letters = ({ right, top, letter, index, size, fontSize }) => {
-
+const Letters = ({ right, color, top, letter, size, fontSize, showTime }) => {
+console.log(showTime, 'time')
   const correctLetterSize = () => {
-    if (fontSize < 10) return `${fontSize + 20}px`;
+    if (fontSize < 10) return `${fontSize}px`;
     if (fontSize > size) return `${size}px`;
   }
   const correctBoxSize = () => {
-    if (fontSize < 10) return `${size + 20}px`;
+    if (fontSize < 10) return `${size}px`;
   }
 
-  const boxPosition = { right: right, top: top, width: `${correctBoxSize()}px`, height: `${correctBoxSize()}px` }
+  const boxStyles = { right, top, width: `${size}px`, height: `${size}px`, backgroundColor: color, animationDuration: `${showTime}s` }
 
   return (
-    <div className='letter' style={boxPosition} key={index}><p style={{ fontSize: correctLetterSize() }}>{letter}</p></div>
+    <div className='letter' style={boxStyles}><p style={{ fontSize: correctLetterSize() }}>{letter}</p></div>
   )
 }
 

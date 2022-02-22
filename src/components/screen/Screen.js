@@ -1,23 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "./screen.css"
 import Letters from "../letter/Letters"
-import { ABC } from '../../constants/contants';
+import { ABC } from '../../utils/constants';
+import { lettersGenerator } from '../../utils/lettersGenerator';
+import { randomize } from '../../utils/randomize';
 
 const Screen = () => {
-    // const position = Math.floor(Math.random()*100);
-    // const length = Array.from({ length: 20 }, () => Math.floor(Math.random() * 27))
+    const [lettersLength, setLettersLength] = useState(100);
+    const [lettersList, setLettersList] = useState([])
+    const [points, setPoints] = useState({})
+
+    useEffect(() => {
+        lettersGenerator(ABC, lettersLength, setPoints, setLettersList);
+    }, [])
 
     return (
         <>
+            <div style={{}}><h1>test</h1></div>
             <div className="screen">
                 {
-                    ABC.map((letter, index) => {
-                        const top = `${Math.floor(Math.random() * 90)}%`;
-                        const right = `${Math.floor(Math.random() * 90)}%`;
-                        const size = Math.floor(Math.random() * 40);
-                        const fontSize = Math.floor(Math.random() * 40);
-                        // const length = Array.from({ length: 20 }, () => Math.floor(Math.random() * 27))
-                        return <Letters top={top} right={right} letter={letter} index={index} size={size} fontSize={fontSize} />
+
+                    lettersList?.map((letter) => {
+                        return <Letters top={randomize().top} right={randomize().right} color={randomize().color} letter={letter} key={randomize().key} size={randomize().size} fontSize={randomize().fontSize} showTime={randomize().showTime} />
+
                     })
                 }
             </div>
