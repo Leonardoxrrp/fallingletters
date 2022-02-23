@@ -12,6 +12,6 @@ export const randomize = () => {
         fontSize: Math.floor(Math.random() * 60),
         key: Math.floor(Math.random() * 100000000),
         color: colorGenerator(),
-        showTime: Math.floor(Math.random() * 10),
+        showTime: Math.floor(Math.random() * 6),
     }
 }
