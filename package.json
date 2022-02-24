@@ -1,13 +1,17 @@
 {
   "name": "fallingletters",
   "version": "1.0.0",
+  "homepage": "https://leonardoxrrp.github.io/fallingletters",
   "source": "public/index.html",
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build",
     "start": "parcel",
     "build": "parcel build"
   },
   "devDependencies": {
+    "gh-pages": "^3.2.3",
     "parcel": "^2.3.2"
   },
   "dependencies": {
