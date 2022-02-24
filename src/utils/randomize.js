@@ -14,4 +14,4 @@ export const randomize = () => {
         color: colorGenerator(),
         showTime: Math.floor(Math.random() * 6),
     }
-}
+} 

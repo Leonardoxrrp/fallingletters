@@ -2,19 +2,17 @@ import React from 'react'
 import "./letter.css"
 
 const Letters = ({ right, color, top, letter, size, fontSize, showTime }) => {
-  const correctLetterSize = () => {
-    if (fontSize < 10) return `${fontSize}px`;
-    if (fontSize > size) return `${size}px`;
+
+  // Without this conditional letters may be too small to be read by the human eye.
+  const correctSize = () => {
+    if (fontSize < 10) return 15
+    return fontSize;
   }
 
-  const correctBoxSize = () => {
-    if (fontSize < 10) return `${size}px`;
-  }
-
-  const boxStyles = { right, top, width: `${size}px`, height: `${size}px`, backgroundColor: color, animationDuration: `${showTime}s` }
-
+  const boxStyles = { right, top, minWidth: `${size}px`, minHeight: `${size}px`, backgroundColor: color, animationDuration: `${showTime}s` }
   return (
-    <div className='letter' style={boxStyles}><p style={{ fontSize: correctLetterSize() }}>{letter}</p></div>
+      <div className='letter' style={boxStyles}><p style={{ fontSize: `${correctSize()}px`, }}  >{letter}</p></div>
+
   )
 }
 
